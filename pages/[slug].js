@@ -7,7 +7,7 @@ export default function Post({post}) {
          <h2>{post?.title || 'No Title'}</h2>
          <p>{post?.content || 'No Content'}</p>
          <hr/>
-         {post.comments && post.comments.map(comment => (
+         {post?.comments && post?.comments?gi.map(comment => (
             <p style={{padding: '1rem', margin: '1rem', border: '1px solid black'}} key={comment.id}>{comment.content}</p>
          ))}
       </div>

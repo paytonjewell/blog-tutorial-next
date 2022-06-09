@@ -21,10 +21,9 @@ export async function getStaticProps() {
   const res = await fetch(`${process.env.STRAPI_URL}/posts?populate=*`)
   const {data} = await res.json()
 
-  console.log('doot', data)
-
   return {
-  props: {data}
+  props: {data},
+    revalidate: 120
   }
 }
 

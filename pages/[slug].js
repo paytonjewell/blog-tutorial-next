@@ -17,7 +17,7 @@ export default function Post({post}) {
 export async function getStaticPaths() {
    const res = await fetch(`${process.env.STRAPI_URL}/posts`)
    const {data} = await res.json()
-   const paths = data.map(post => ({
+   const paths = data?.map(post => ({
       params: {
          slug: post.slug
       }

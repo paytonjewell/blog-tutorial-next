@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 export default function Post({post}) {
-   console.log(post)
    return (
       <div>
          <Link href={'/'}>Home</Link>
@@ -16,7 +15,7 @@ export default function Post({post}) {
 
 // tell next.js how many pages there are
 export async function getStaticPaths() {
-   const res = await fetch('http://localhost:1338/api/posts')
+   const res = await fetch(`${process.env.STRAPI_URL}/posts`)
    const {data} = await res.json()
    const paths = data.map(post => ({
       params: {
@@ -34,7 +33,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
    const {slug} = params
 
-   const res = await fetch(`http://localhost:1338/api/posts?filters[slug][$eq]=${slug}&populate=*`)
+   const res = await fetch(`${process.env.STRAPI_URL}/posts?filters[slug][$eq]=${slug}&populate=*`)
    const {data} = await res.json()
    const post = data[0]
 

@@ -18,7 +18,7 @@ export default function Home({data}) {
 
 export async function getStaticProps() {
  // get posts from our API
-  const res = await fetch(`http://localhost:1338/api/posts?populate=*`)
+  const res = await fetch(`${process.env.STRAPI_URL}/posts?populate=*`)
   const {data} = await res.json()
 
   return {

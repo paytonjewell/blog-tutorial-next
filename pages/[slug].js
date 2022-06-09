@@ -4,7 +4,8 @@ export default function Post({post}) {
    return (
       <div>
          <Link href={'/'}>Home</Link>
-         <h2>{post.title}</h2>
+         <h2>{post?.title || 'No Title'}</h2>
+         <p>{post?.content || 'No Content'}</p>
          <hr/>
          {post.comments && post.comments.map(comment => (
             <p style={{padding: '1rem', margin: '1rem', border: '1px solid black'}} key={comment.id}>{comment.content}</p>

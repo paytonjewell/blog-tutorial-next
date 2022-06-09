@@ -8,7 +8,7 @@ export default function Home({data}) {
          <Link href={post.slug} key={post.id}>
            <div style={{marginBottom: '1rem', cursor: 'pointer'}}>
              <h2>{post.title}</h2>
-             <p>{post.User.username}</p>
+             <p>{post.User?.username}</p>
            </div>
          </Link>
       ))}
@@ -20,6 +20,8 @@ export async function getStaticProps() {
  // get posts from our API
   const res = await fetch(`${process.env.STRAPI_URL}/posts?populate=*`)
   const {data} = await res.json()
+
+  console.log('doot', data)
 
   return {
   props: {data}
